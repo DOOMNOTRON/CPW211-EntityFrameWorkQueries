@@ -4,7 +4,7 @@ using EntityFrameWorkQueries.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace EntityFrameWorkQueries
+namespace EntityFrameWorkQueries.Data
 {
     public partial class APContext : DbContext
     {
