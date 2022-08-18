@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace EntityFrameWorkQueries
+namespace EntityFrameWorkQueries.Models
 {
     public partial class ContactUpdate
     {
