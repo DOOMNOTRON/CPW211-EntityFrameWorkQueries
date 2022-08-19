@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.btnSelectAllVendors = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnAllCaliVendors = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -43,18 +43,19 @@
             this.btnSelectAllVendors.UseVisualStyleBackColor = true;
             this.btnSelectAllVendors.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btnAllCaliVendors
             // 
-            this.button2.Location = new System.Drawing.Point(81, 171);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(150, 46);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnAllCaliVendors.Location = new System.Drawing.Point(81, 171);
+            this.btnAllCaliVendors.Name = "btnAllCaliVendors";
+            this.btnAllCaliVendors.Size = new System.Drawing.Size(334, 107);
+            this.btnAllCaliVendors.TabIndex = 1;
+            this.btnAllCaliVendors.Text = "Select*FROM Vendors \r\nWHERE VendorState=\'CA\' \r\nORDER by VendorName Ascending";
+            this.btnAllCaliVendors.UseVisualStyleBackColor = true;
+            this.btnAllCaliVendors.Click += new System.EventHandler(this.btnAllCaliVendors_Click);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(81, 284);
+            this.button3.Location = new System.Drawing.Point(81, 333);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(150, 46);
             this.button3.TabIndex = 2;
@@ -67,7 +68,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1330, 741);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnAllCaliVendors);
             this.Controls.Add(this.btnSelectAllVendors);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -78,7 +79,7 @@
         #endregion
 
         private Button btnSelectAllVendors;
-        private Button button2;
+        private Button btnAllCaliVendors;
         private Button button3;
     }
 }
