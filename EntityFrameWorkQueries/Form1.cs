@@ -1,5 +1,6 @@
 using EntityFrameWorkQueries.Data;
 using EntityFrameWorkQueries.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Text;
 
 namespace EntityFrameWorkQueries
@@ -93,6 +94,42 @@ namespace EntityFrameWorkQueries
                 // Do something with the Vendor object
 
             }
+        }
+
+        private void btnVendorsAndInvoices_Click(object sender, EventArgs e)
+        {
+            APContext dbContext = new();
+
+            // Vendors LEFT JOIN Invoices
+            List<Vendor> allVendors = dbContext.Vendors.Include(v => v.Invoices).ToList();
+
+
+            // unfinished code this pulls a verdor object for each invidual invoice, vendors
+            // are also pulled back if they do not have any invoices.
+            //
+            // List<Vendor> allVendors = (from v in dbContext.Vendors
+            //                           join inv in dbContext.Invoices
+            //                             on v.VendorId equals inv.VendorId into grouping
+            //                           from inv in grouping.DefaultIfEmpty()
+            //                           select v).ToList();
+
+            StringBuilder results = new();
+
+            foreach (Vendor v in allVendors)
+            {
+                results.Append(v.VendorName);
+
+                foreach (Invoice inv in v.Invoices)
+                {
+                    results.Append(", ");
+
+                   results.Append(inv.InvoiceNumber);
+                }
+
+                results.AppendLine();
+            }
+
+            MessageBox.Show(results.ToString());
         }
     }
 
