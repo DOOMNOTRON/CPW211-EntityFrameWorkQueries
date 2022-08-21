@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using EntityFrameWorkQueries.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace EntityFrameWorkQueries
+namespace EntityFrameWorkQueries.Data
 {
     public partial class APContext : DbContext
     {
@@ -31,6 +33,8 @@ namespace EntityFrameWorkQueries
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=AP");
             }
+
+            optionsBuilder.LogTo(message => Debug.WriteLine(message), new[] {DbLoggerCategory.Query.Name} ); // Displays what queries are being generated.
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
