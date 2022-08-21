@@ -1,5 +1,6 @@
 using EntityFrameWorkQueries.Data;
 using EntityFrameWorkQueries.Models;
+using System.Text;
 
 namespace EntityFrameWorkQueries
 {
@@ -40,6 +41,39 @@ namespace EntityFrameWorkQueries
                                        orderby v.VendorName
                                        select v).ToList();
 
+
         }
+
+        private void btnSelectSpecificColumns_Click(object sender, EventArgs e)
+        {
+            APContext dbContext = new();
+            
+            // Anonymous
+            List<VendorLocation> results = (from v in dbContext.Vendors
+                          select new VendorLocation
+                          { 
+                              VendorName = v.VendorName, 
+                              VendorState = v.VendorState, 
+                              VendorCity = v.VendorCity
+                          
+                          }).ToList();
+            
+            StringBuilder displayString = new();
+
+            foreach(VendorLocation vendor in results)
+            {
+                displayString.AppendLine($"{vendor.VendorName} is in {vendor.VendorCity}");
+            }
+
+            MessageBox.Show(displayString.ToString());
+        }
+    }
+
+    class VendorLocation
+    {
+        public string VendorName { get; set; }
+        public string VendorState { get; set; }
+
+        public string VendorCity { get; set; }
     }
 }
